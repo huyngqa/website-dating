@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+body{
+  font-family: 'Open Sans', sans-serif;
+  background: #F0F2ED;
+}
+
+.avatar{
+  height: 72px;
+  width: 72px;
+  border-radius: 50%;
+  border: 3px solid #417ADE;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.bodyPost{
+  margin-left: 20px;
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+
+
+.hoverCss:hover {
+  cursor: pointer;
+}
+
+.sidenav {
+  height: 100%;
+  width: 300px;
+  position: sticky;
+  z-index: 1;
+  top: 70px;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+

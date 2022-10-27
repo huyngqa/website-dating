@@ -1,0 +1,108 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3 sidenav">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-lg-9">
+      <div class=" p-2" style="margin-left:90px ;height: 100vh ; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+        <div class="row "
+             style="padding:20px 30px;text-align: center;margin-top: 60px; font-weight: bold;font-size: 27px; border-radius: 5px 5px 0 0; color: black ; background-color: silver">
+          <span>Quản lí trang cá nhân</span>
+        </div>
+        <div class="row">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active button_tab" style="font-size: 27px" id="home-tab" data-bs-toggle="tab"
+                      data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Cập nhật
+                ảnh đại diện
+              </button>
+            </li>
+<!--            <li class="nav-item" role="presentation">-->
+<!--              <button class="nav-link button_tab" id="profile-tab" (click)="cancelAvatarUpload()" style="font-size: 22px"-->
+<!--                      data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile"-->
+<!--                      aria-selected="false">Trạng thái hoạt động-->
+<!--              </button>-->
+<!--            </li>-->
+            <li class="nav-item" role="presentation">
+              <button class="nav-link button_tab" id="contact-tab" (click)="cancelAvatarUpload()" style="font-size: 22px"
+                      data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
+                      aria-selected="false">Đổi mật khẩu
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="card mb-3 mt-5 w-100" style=";height: 100% ;border: none">
+                <form *ngIf="createForm" [formGroup]="createForm " (ngSubmit)="createAvatar()">
+                  <div class="row g-0">
+                    <div class="col-md-7">
+                      <div class="mb-2 m-auto" id="frames_avatar">
+                        <img *ngIf="!stream"
+                             [src]="imageSrc || previewImage || avatar"
+                             id="blah" class="img-fluid rounded-start" alt="..." style="width: 100%">
+                        <webcam (click)="capture()" *ngIf="stream" [trigger]="$trigger" (imageCapture)="snapshot($event)"
+                                style="cursor: pointer"></webcam>
+                        <webcam *ngIf="!stream" [trigger]="$trigger" style="display: none"></webcam>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="wrapper" style="text-align: center " id="card-right">
+                        <div class="card-body">
+                          <div class="row m-auto">
+                            <label *ngIf="!stream && !selectFile" for="file">
+                              <i class="fa-solid fa-file input" style="font-size:24px;color: white"></i>
+                              <!--                            <i class="fa-solid fa-file"></i>-->
+                              <input *ngIf="!stream && !selectFile" style="display:none;" type="file" class="form-control"
+                                     id="file" aria-describedby="emailHelp"
+                                     (change)="updateAvatar($event)">
+                            </label>
+                            <button *ngIf="selectFile" type="submit"
+                                    class="btn btn-primary save-data">
+                              <i class="fa-solid fa-upload" style="font-size: 24px"></i>
+                            </button>
+                          </div>
+                          <div class="row m-auto mt-2">
+                            <button *ngIf="!stream && !selectFile " (click)="checkWebcam()"
+                                    class="btn btn-primary camera">
+                              <i style="font-size: 24px" class="fa-sharp fa-solid fa-camera"></i>
+                            </button>
+                            <!--                          <button *ngIf="!stream && selectFile " style="display: none"></button>-->
+                            <button class="btn btn-danger camera" *ngIf="stream"
+                                    style=";color: aliceblue ;"
+                                    (click)="cancelAvatarUpload()">
+                              <i class="fa-solid fa-rectangle-xmark" style="font-size: 24px"></i>
+                            </button>
+
+                            <button *ngIf="!selectFile" style="display: none" type="reset"
+                                    (click)="cancelAvatarUpload()"
+                                    class="btn btn-danger">
+
+                            </button>
+                            <button *ngIf="selectFile" type="reset"
+                                    (click)="cancelAvatarUpload()"
+                                    class="btn btn-danger camera">
+                              <i class="fa-solid fa-trash"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+<!--            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">-->
+<!--              <app-update-status-active></app-update-status-active>-->
+<!--            </div>-->
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+              <div style="margin-top: 50px">
+                <app-reset-password></app-reset-password>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

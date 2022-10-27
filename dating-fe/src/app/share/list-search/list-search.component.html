@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div class="container-fluid ">
+  <div style="padding: 50px 0 60px 0px" class="text-center row">
+    <h1 style="color: #d92323 ;font-family: Alice;">Đây có phải là người bạn muốn tìm kiếm</h1>
+  </div>
+  <div>
+    <div class="row container-fluid">
+      <div *ngFor="let item of user" class="col-lg-3 col-md-4 col-sm-6 mt-2 ">
+        <div class="cart m-auto">
+          <div class="cart_img">
+                      <img src="" [src] = "item.avatar"alt="no">
+          </div>
+         <div style="height: 150px">
+           <h4 class="text-danger">{{item.name}}</h4>
+           <b class="text-black">{{item.job}}</b><br><br>
+           <p class="text-black">{{item.address}}</p><br>
+         </div>
+          <div><a id="friend" [routerLink]="['/user/users/', item.idUser]" >Chi Tiết</a></div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div>
+      <div class="container-fluid mt-3 p-2 d-flex justify-content-end">
+        <ul class="pagination float-end">
+
+          <div *ngIf="page == 0">
+            <li class="page-item disabled">
+              <a class="page-link previous" >Previous</a>
+            </li>
+          </div> <div *ngIf="page != 0">
+            <li class="page-item">
+              <a class="page-link previous btn" (click)="previousPage()">Previous</a>
+            </li>
+          </div>
+          <div *ngFor="let count of countTotalPages; index as i">
+            <div *ngIf="i == page">
+              <li class="page-item active">
+                <p class="numberPage text-danger" >{{i+1 +'/'+totalPages}}</p>
+              </li>
+            </div>
+          </div>
+          <div *ngIf="page == totalPages - 1">
+            <li class="page-item disabled">
+              <button class="page-link next" >Next</button>
+            </li>
+          </div>
+          <div *ngIf="page != totalPages - 1">
+            <li class="page-item">
+              <a class="page-link next btn" (click)="nextPage()">Next</a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

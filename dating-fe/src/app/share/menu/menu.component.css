@@ -1,0 +1,21 @@
+
+.avt {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+.sidenav {
+  height: 100%;
+  position: sticky;
+  z-index: 1;
+  top: 70px;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}

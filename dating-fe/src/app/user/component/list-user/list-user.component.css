@@ -1,0 +1,90 @@
+
+h4.text-center {
+  font-family: revert;
+  font-weight: 500;
+  color: #2c7272;
+}
+tr:hover{
+  cursor: pointer;
+}
+
+.modal-content {
+  border-radius: 15px;
+  background-color: #fffffd;
+}
+
+.name_member p {
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.scroller {
+  width: 495px;
+  height: 253px;
+  overflow-y: scroll;
+}
+
+a.text-decoration-none {
+  color: #111128;
+  padding: 2px 9px;
+  border-radius: 3px;
+}
+
+a.text-decoration-none:hover {
+  color: #e8e8ee;
+  background-color: #c1152f;
+  cursor: pointer;
+}
+
+span.text-info {
+  font-family: sans-serif;
+  font-weight: bolder;
+  margin: 0 15px;
+}
+label {
+  font-weight: 700;
+}
+
+tr.text-center {
+  background-color: #a91c11;
+  color: #fbf7f7;
+}
+.warning-body{
+  background-color: antiquewhite;
+}
+
+@media (max-width: 768px) {
+  input.form-control.me-2.ng-pristine.ng-valid.ng-touched {
+    margin-top: 20px;
+  }
+  .searchName{
+    margin-top: 10px;
+  }
+}
+
+button.btn.text-dark.redirect-user {
+  font-weight: 500;
+}
+
+button.btn.text-dark.redirect-user:hover {
+  text-decoration-line: underline;
+  border: none;
+  text-decoration-style: inherit;
+  text-decoration-color: blue;
+}
+
+button.btn.text-danger span:hover {
+  font-size: 20px;
+  transition: 2s;
+  width: 50px;
+  height: 50px;
+  color: white;
+  border-radius: 5px;
+  background-color: #a91c11;
+}
+
+button.name_member_bt {
+  border: none;
+  font-weight: bold;
+  background-color: whitesmoke;
+}

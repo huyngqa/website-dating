@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div style="margin-top: 100px" class="container-fluid">
+  <div class="row mt-3">
+    <!--menu-->
+    <div class="col-lg-3 sidenav">
+      <app-menu></app-menu>
+    </div>
+
+
+    <!--content-->
+    <div class="col-lg-9 p-2">
+      <div class="row container-fluid">
+        <div class="col-lg-3" *ngFor="let r of requestList">
+          <div class="cart1 shadow">
+            <div class="cart_img">
+              <img src="{{r.avatar}}"
+                   alt="">
+            </div>
+            <h6 style="cursor: pointer" [routerLink]="['/user/users',r.idUser]">{{r.name}}</h6>
+            <p *ngIf="r.gender==true">Nam</p>
+            <p *ngIf="r.gender==false">Nữ</p>
+            <div class="social">
+
+              <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="tiktok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <div>
+              <button class="accept btn btn-sm btn-outline-primary" (click)="accept(myId,r.idUser)" >Đồng ý <i class="fa-solid fa-check"></i></button>
+              <button class="denied btn btn-sm btn-outline-danger" (click)="denied(myId,r.idUser)">Từ chối <i class="fa-solid fa-x"></i></button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

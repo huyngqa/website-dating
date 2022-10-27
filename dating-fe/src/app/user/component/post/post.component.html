@@ -1,0 +1,225 @@
+<app-header></app-header>
+<!--body-->
+<div class="container-fluid">
+  <div class="row mt-3">
+    <!--menu-->
+    <div class="col-lg-3 sidenav">
+      <app-menu></app-menu>
+    </div>
+    <!--content-->
+    <!--DIV MOI -->
+    <div class="col-lg-9 p-2">
+
+      <div class="row">
+        <div class="col-lg-1"></div>
+
+        <div class="col-lg-10">
+
+
+            <div class="row" style="border-radius: 15px">
+              <div class="col-lg-3" *ngFor="let s of suggestList">
+                <div class="cart1 shadow">
+                  <div class="cart_img">
+                    <img src="{{s.avatar}}" width="100%" height="100%"
+                         alt="">
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <h6 class="ten">{{s.name}}</h6>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12">
+
+                      <p *ngIf="s.gender==true" class="gioitinh">Nam</p>
+                      <p *ngIf="s.gender==false" class="gioitinh">Nữ</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12">
+                                      <button class="accept btn btn-sm btn-outline-primary" [routerLink]="['/users', s.idUser]" >Chi tiết</button>
+                    </div>
+                  </div>
+
+                  <div class="social">
+
+                    <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="tiktok"><i class="fa-brands fa-tiktok"></i></a>
+                  </div>
+                  <div>
+                    <!--            <button class="denied btn btn-sm btn-outline-danger" (click)="denied(myId,r.idUser)">Từ chối <i class="fa-solid fa-x"></i></button>-->
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+<!--          -&#45;&#45;&#45;&#45;-->
+          <form *ngIf="newUse" [formGroup]="postCreate" (ngSubmit)="savePost()">
+            <div class=" row shadow-lg p-3 mt-4 " style="border-radius: 15px">
+              <div class="d-flex col-lg-12" *ngIf="newUse">
+                <img class="avatar" src="{{newUse.avatar}}">
+
+
+                <div class="w-100" style="margin-left: 5px; margin-top: 3px; border-radius: 22px">
+            <textarea formControlName="content" class="form-control text-capitalize"
+                      placeholder="Bạn đang nghĩ gì thế..."
+                      style="border-radius: 22px"></textarea>
+                </div>
+
+              </div>
+              <div class=" img-fluid">
+                <img width="20%" class=" m-1 hoverCss" *ngFor="let load of loadImage" src="{{load}}">
+              </div>
+              <div>
+                <hr class="p2 mt-3" style="width: 99%; margin-left: 10px">
+              </div>
+
+              <div class="row mt-3">
+                <div class="mt-3 iconGroup col-lg-4 col-sm-6 text-center">
+                  <i class="fa-solid fa-video me-2 " style="font-size: 30px; color: hotpink"></i>
+                  <span style="color: plum; font-weight: bolder">Video Trực Tiếp</span>
+                </div>
+                <div class="mt-3 iconGroup col-lg-4 col-sm-6 text-center ">
+                  <label for="formFileMultiple" class="form-label">
+                    <i class="fa-solid fa-image me-2 " style="cursor: pointer;font-size: 30px ; color: #0b5ed7"></i>
+                  </label>
+                  <span class="m-0" style="color: plum; font-weight: bolder;">Ảnh/Video</span>
+                  <input style="display: none" class="form-control" type="file" id="formFileMultiple"
+                         (change)="show($event)"
+                         multiple/>
+                </div>
+                <div class="mt-3 iconGroup  col-lg-4 col-sm-12 text-center">
+                  <button type="submit" class="btn btn-success">Đăng
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row shadow-lg p-3 mt-4" *ngFor="let l of listShow" style="border-radius: 15px">
+            <div class="col-lg-1">
+              <img height="72px " width="72px" style="border-radius: 50%" class="avatar" src="{{l.avatar}}">
+
+            </div>
+            <div class="col-lg-11">
+              <div class="ms-2">
+                <div class="row m-0">
+                  <div class="col-lg-6 m-0">
+                    <p style="font-size: 18px" class="m-0">{{l.userName}}</p>
+                  </div>
+                  <div class="col-lg-3"></div>
+                  <div class="col-lg-3 text-end">
+                    <div>
+                  <span style="font-size: 30px" [matMenuTriggerFor]="menu" class="hoverCss"
+                        aria-label="Example icon-button with a menu">
+                    ...
+                  </span>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                          <span [routerLink]="['/detailPost', l.idPost]">Chi tiết bài đăng</span>
+                        </button>
+                        <button mat-menu-item >
+                          <span  data-bs-toggle="modal"
+                                 data-bs-target="#createReport" (click)="elementReport(l.idPost)">
+                            Tố Cáo
+                          </span>
+                        </button>
+                      </mat-menu>
+                    </div>
+                  </div>
+                </div>
+                <div class="row  m-0">
+                  <div class="col-lg-12 m-0 mb-3">
+                    <p class="hoverCss">{{l.time| date:"dd/MM/yyyy"}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <p>{{l.content}}</p>
+            </div>
+            <div class=" img-fluid d-inline-block" *ngIf="l.mediaArr">
+              <div *ngIf="l.mediaArr.length>1" class="img-fluid">
+                  <img width="48%" class=" m-1  hoverCss"  *ngFor="let x of l.mediaArr"  src="{{x}}">
+              </div>
+              <div class=" img-fluid"  *ngIf="l.mediaArr.length==1">
+                <img width="98%" class=" m-1 hoverCss" *ngFor="let x of l.mediaArr" src="{{x}}">
+              </div>
+            </div>
+
+            <div class="text-end p-2">
+
+            </div>
+            <div class="row">
+              <div>
+                <hr style="margin-left: 200px" class="m-0 p-0">
+              </div>
+              <div class="col-lg-4 p-2 text-center">
+                <i class="fa-sharp fa-solid fa-thumbs-up" style="font-size: 20px; color:#0b5ed7"></i>
+                <span class="hoverCss" style="font-size: 15px">Thích</span></div>
+              <div class="col-lg-4 p-2 text-center">
+                <i class="fa-regular fa-message hoverIcon hoverCss" style="font-size: 20px"></i>
+                <span style="font-size: 15px" class="hoverCss" [routerLink]="['/detailPost', l.idPost]"><a style="text-decoration: none; color: black" >Bình Luận</a></span>
+              </div>
+              <div class="col-lg-4 p-2 text-center">
+                <i class="fa-sharp fa-solid fa-arrow-up-right-from-square hoverCss"
+                   style="font-size: 20px"></i>
+                <span class="hoverCss" style="font-size: 15px">Gửi</span></div>
+              <div>
+                <hr class="m-0 p-0">
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-lg-1 p-0 m-0"></div>
+      </div>
+    </div>`
+  </div>
+  <form *ngIf="reportDetailForm" [formGroup]="reportDetailForm" (ngSubmit)="submitReport()">
+    <div class="modal fade" id="createReport" tabindex="-1" aria-labelledby="exampleModalLabel2"
+         aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="exampleModalLabel2">Tố Cáo</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <div class="col-md-12">
+                <h5><label for="type" class="form-label">Thông Tin Tố Cáo: </label></h5>
+                <select id="type" class="form-select" formControlName="report">
+                  <option value="">---Chọn nội dung tố cáo---</option>
+                  <option *ngFor="let temp of reportList" [ngValue]="temp.idReport">{{temp.nameReport}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetModal()">
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Tố Cáo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+

@@ -1,0 +1,26 @@
+.avt {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+
+}
+
+.btn-pink {
+  background: #FF445C;
+}
+
+.bg-form-info {
+  background-color: whitesmoke;
+}
+
+.text-pink {
+  color: #FF445C;
+}
+
+.btn-avt {
+  pointer-events: none;
+}
+
+
+
+

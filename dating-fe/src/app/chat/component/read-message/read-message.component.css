@@ -1,0 +1,62 @@
+#searchInput:focus {
+  outline: 0;
+}
+
+.hoverMess {
+  text-decoration: none;
+}
+
+.hoverMess:hover {
+  background: gray;
+}
+
+.hoverMess::selection {
+  background: rgba(82, 179, 217, 0.3);
+  color: inherit;
+}
+
+.nameWating {
+  font-weight: bold;
+}
+
+.anotherUserChat {
+  background: #20c997;
+  border-radius: 0px 15px 15px 15px;
+  padding: 10px;
+  margin-bottom: 0;
+}
+
+.myUserChat {
+  text-align: left;
+  background: pink;
+  padding: 10px;
+  width: 60%;
+  border-radius: 15px 0 15px 15px;
+  margin-bottom: 0;
+
+}
+
+.myChatAvatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+
+}
+
+.anotherAvatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%
+}
+
+.inputChat {
+  border-radius: 10px;
+  padding: 5px;
+  border-color: white;
+}
+
+.timeChat {
+  color: gray;
+  font-size: 10pt;
+  margin-left: 20px;
+}

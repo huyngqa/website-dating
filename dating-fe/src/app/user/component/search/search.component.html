@@ -1,0 +1,105 @@
+<app-header></app-header>
+<!--body-->
+<div class="container-fluid">
+  <div class="row mt-3">
+    <!--menu-->
+    <div class="col-lg-3 sidenav">
+      <app-menu></app-menu>
+    </div>
+
+
+    <!--content-->
+    <div class="col-lg-9 p-2">
+      <div class="mt-4 ms-4">
+        <form class="row m-auto mb-2" style="border: solid 1px black ; border-radius: 10px">
+          <div class="text-center mb-1">
+            <h1 class="mt-1">Tìm Kiếm Nâng Cao</h1>
+            <b>
+              <hr class="col-md-8 m-auto" style="color: white">
+            </b>
+          </div>
+          <div class="col-md-6 mb-2">
+            <label class="form-label"><b>Họ và tên :</b></label>
+            <input type="text" name="name" id="name" class="shadow-sm form-control"
+                   placeholder="Nhập tên muốn tìm kiếm ....." [(ngModel)]="name">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label"><b>Năm Sinh : </b></label>
+            <input type="text" name="dateOfBirth" class="shadow-sm form-control"
+                   placeholder="Nhập năm sinh..." [(ngModel)]="dateOfBirth" >
+          </div>
+          <div class="col-md-3">
+            <label class="form-label"><b>Địa chỉ : </b></label>
+            <input type="text" name="address" id="address"
+                   class="shadow-sm form-control" placeholder="Nhập địa chỉ..." [(ngModel)]="address"
+                   >
+          </div>
+          <div class="col-md-3">
+            <label class="form-label"><b>Sở thích :</b></label>
+            <input type="text" name="hobbit" id="hobbit" class="shadow-sm form-control"
+                   placeholder="Nhập sở thích..." [(ngModel)]="hobbitName" >
+          </div>
+          <div class="col-md-3">
+            <label class="form-label"><b> Việc làm :</b></label>
+            <input type="text" name="job" id="job" class="shadow-sm form-control"
+                   placeholder="Nhập công việc ..." [(ngModel)]="job" >
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label"><b>Giới Tính :</b></label>
+            <select name="gender" id="gender" class="shadow-sm form-select" [(ngModel)]="gender"
+                    >
+              <option value="" selected>Chọn giới tính</option>
+              <option [ngValue]="0">Nữ</option>
+              <option [ngValue]="1">Nam</option>
+            </select>
+          </div>
+          <div class="col-md-3 m-auto">
+            <button class="btn btn-success form-control mt-3" (click)="onSearch()">Tìm kiếm</button>
+          </div>
+        </form>
+
+        <div class="row container">
+          <div class="row row-cols-1  shadow g-4 mt-2 m-auto p" *ngIf="flag">
+            <div *ngFor="let item of users" class="mb-4 col-lg-4">
+              <div class="cart">
+                <div class="cart_img mt-1">
+                  <img src="{{item.avatar}}">
+                </div>
+                <div class="mt-4">
+                  <div class="col-md-12 m-auto" data-bs-toggle="tooltip" data-bs-placement="top"
+                       title="{{item.dateOfBirth}}"><h5>{{item.name}}</h5></div>
+                  <div class="col-md-12 m-auto"><i class="fa-sharp fa-solid fa-coins"></i><h6>{{item.coin}}</h6></div>
+                </div>
+                <div class="col-md-12 mt-3 d-flex">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-2"><i class="fa-brands fa-twitter"></i></div>
+                  <div class="col-md-2"><i class="fa-brands fa-instagram"></i></div>
+                  <div class="col-md-2"><i class="fa-brands fa-facebook"></i></div>
+                  <div class="col-md-3"></div>
+                </div>
+                <div>
+                  <div>
+                    <button type="button" class="btn btn-outline-primary m-auto" [routerLink]="['/users/', item.idUser]">Chi tiết</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

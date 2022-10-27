@@ -1,0 +1,54 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top " style="background-color: #b30217!important;">
+  <div class="container-fluid">
+    <a class="navbar-brandb " routerLink="" style="margin-left: 30px" ><img src="assets\video\Untitled-1.png"
+                                                                      height="60px" width="180px"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link  text-white "[routerLink]="['/user/newFeed']" style="font-size: 30px;margin-left: 100px"
+             ><i class="fa-solid fa-house"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" [routerLink]="['/friend/listFriend']" style="font-size: 30px;margin-left: 100px"><i
+            class="fa-solid fa-users"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white "[routerLink]="['/chat/message']"style="font-size: 30px;margin-left: 100px" href="#">
+            <i class="fa-solid fa-comment"></i>
+          </a>
+        </li>
+      </ul>
+      <div class="d-flex ">
+        <input type="text" class="form-control searchInput  me-2" [(ngModel)]="name" style=" border-radius: 10px;height: 45px;padding: 0 10px;width: 350px;border-color: coral;margin-left: 5px"
+               placeholder="Tìm kiếm tên">
+        <a id ="search" (click)="load()" style="font-size: 25px">
+          <i class="fa-solid fa-magnifying-glass"></i></a>
+      </div>
+      <div class="dropdown" *ngIf="myUser"style="float:right;">
+        <a class="nav-link dropdown-toggle"
+           role="button"
+           data-bs-toggle="dropdown" aria-expanded="false">
+          <img
+            src="{{myUser.avatar}}"
+            style="border-radius: 50%; border: 1px solid #a1a1a1; height: 65px; width: 65px;" alt="">
+        </a>
+        <div class="dropdown-content">
+          <a class="dropdown-item"  (click)="reload()"><i class="fa-solid fa-user me-1"></i>Trang cá nhân</a>
+          <a *ngIf="this.roleList.includes('ROLE_ADMIN')" class="dropdown-item" routerLink="/website/report-detail"><i class="fa-solid fa-circle-info"></i>Thông tin phản hồi</a>
+          <a class="dropdown-item"  routerLink="/user/upgradeAccount"><i class="fa-sharp fa-solid fa-barcode m-1"></i>Thông tin tài khoản</a>
+          <a  *ngIf="this.roleList.includes('ROLE_ADMIN')" class="dropdown-item" routerLink="/listUser"><i class="fa-solid fa-list me-1"></i>Danh sách thành viên</a>
+          <a class="dropdown-item" routerLink="/user/searchFriend"><i class="fa-brands fa-searchengin me-1"></i>Tìm kiếm nâng cao</a>
+          <a class="dropdown-item" (click)="logOut()"><i class="fa-solid fa-right-from-bracket me-1"></i>Đăng xuất</a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+

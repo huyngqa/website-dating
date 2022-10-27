@@ -1,0 +1,129 @@
+
+<body>
+<app-header></app-header>
+<div class="container-fluid mt-4" >
+  <h2 class="text-center">QUẢN LÝ THÀNH VIÊN</h2>
+  <div class=" container-fluid mt-4">
+    <div class="row">
+      <div class="col-md-3">
+        <select class="form-select" [(ngModel)]="selectedMember" (change)="searchAndListUser()"
+                aria-label="Default select example"
+                style="background-color: rgb(219 211 214);">
+          <option selected>Điều kiện lọc</option>
+          <option value="">Tất cả </option>
+          <option value="vip">VIP</option>
+          <option value="basic">Thông thường</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-md-8">
+              <input class="form-control me-2" type="search" [(ngModel)]="keyword" (change)="searchAndListUser()" placeholder="Tên thành viên"
+                     aria-label="Search"
+                     style="border-bottom-color: unset;background-color: rgb(219 211 214);">
+            </div>
+            <div class="col-md-4 searchName">
+              <button class="btn btn-danger" type="submit" ><span class="bi bi-search red-color"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5"></div>
+    </div>
+
+    <table class="table table-striped table-bordered table-hover mt-2"
+           style="background-color: rgb(223 220 220);box-shadow: 7px -5px 3px 0px #a9af">
+      <thead>
+      <tr class="text-center">
+        <th>STT</th>
+        <th>Tên thành viên</th>
+        <th>Cấp độ</th>
+        <th>Ngày tham gia</th>
+        <th>Số xu</th>
+        <th>Số lần vi phạm</th>
+        <th>Cảnh cáo thành viên</th>
+      </tr>
+      </thead>
+      <tbody style="font-weight: 500">
+      <tr *ngFor="let item of userList,index as i">
+        <td>{{(i + 1) + 8 * page}}</td>
+        <td><button class="btn text-dark redirect-user" type = "submit" [routerLink]="['/users', item.idUser]">{{item.name}}</button></td>
+        <td>{{item.typeUser}}</td>
+        <td class="text-center">{{item.joinDay | date: 'dd-MM-yyyy'}}</td>
+        <td class="text-center">{{item.coin}}</td>
+        <td class="text-center">{{item.quantity}}</td>
+        <td class="text-center">
+          <button class="btn text-danger" data-bs-toggle="modal" data-bs-target="#detail" (click)="getReportDetail(item.idUser)"><span class='bi bi-file-lock-fill' style="font-size:25px"></span></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="row text-center mb-3">
+      <div class="col-lg-12">
+        <a *ngIf="page" class="text-decoration-none" (click)="previous()">
+          <span class="bi bi-chevron-double-left"></span>
+        </a>
+        <span class="text-info" style="font-size: 18px">{{page + 1}}/{{totalPage}}</span>
+        <a *ngIf="page != totalPage - 1" (click)="next()" class="text-decoration-none">
+          <span class="bi bi-chevron-double-right"></span>
+        </a>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!--  Modal Detail-->
+  <div class="modal fade " id="detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius: 10px;">
+        <div class="modal-header  text-center" style="background-color: #fbeae3;">
+          <h3 class="modal-title text-danger" id="exampleModalLabel1" style="margin: 0 auto;">Cảnh cáo thành
+            viên</h3>
+        </div>
+        <div class="modal-body scroller" style="background-color: #f7f4f4;">
+          <div class="mb-3 ">
+            <div class="name_member" *ngIf="user != null"><button class="name_member_bt"  data-bs-dismiss="modal" type="submit" style=" color: slateblue;" [routerLink]="['/users', user.idUser]">Thành viên : {{user.name}}</button></div>
+            <table class="table table-striped table-bordered mt-4 "
+                   style="background-color: rgb(237 94 83);box-shadow: 5px -5px 5px 0px #778178;">
+              <thead>
+              <tr class="text-center">
+                <th>Ngày vi phạm</th>
+                <th>Lỗi vi phạm</th>
+                <th>Thành viên báo cáo</th>
+              </tr>
+              </thead>
+              <tbody class="warning-body" *ngIf="reportDetailList!=null">
+              <tr *ngFor="let rd of reportDetailList,index as i">
+                <td>{{rd.timeReport | date: 'dd-MM-yyyy'}}</td>
+                <td>{{rd.nameReport}}</td>
+                <td>{{rd.username}}</td>
+              </tr>
+              </tbody>
+            </table>
+
+            <div class="col-md-12">
+              <label for="form-warning">Chọn hình thức cảnh cáo :</label>
+              <select class="form-select" [(ngModel)]="selectWarning"
+                      aria-label="Default select example" id="form-warning"
+                      style="background-color: rgb(219 211 214);" >
+                <option value="14">Khóa nick một tuần</option>
+                <option value="15">Khóa nick một tháng</option>
+                <option value="16">Khóa vĩnh viễn</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click) = "updateStatus()">Xác nhận</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<app-footer></app-footer>
+</body>

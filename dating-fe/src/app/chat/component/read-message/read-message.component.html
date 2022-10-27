@@ -1,0 +1,101 @@
+<app-header></app-header>
+<div class="row viewChat container-fluid"style="position: sticky;top:100px">
+  <div class="col-3  " style="  border-radius: 20px; background: pink">
+    <input type="text" placeholder="Tìm kiếm tin nhắn" class="mt-3"
+        (keydown.enter)="searchUser()" [(ngModel)]="search"  style=" background: pink; border: none;border-bottom: solid 1px gray" id="searchInput">
+
+    <table class="mt-2 w-100 hoverMess" *ngFor="let gr of groups">
+      <tr (click)="loadMessage(gr.idUser,gr.avatar,gr.name)">
+        <td class="w-25 text-center"><img
+          src="{{gr.avatar}}"
+          alt="" style="height: 50px; width: 50px; border-radius: 50%">
+        </td>
+        <td class="w-75">
+          <div>
+            <span class="mt-2 pt-2 nameWating">{{ gr.name }}</span><br>
+            <span></span>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div class="col-9">
+    <div style="border-radius: 20px; background: pink">
+      <div class="row p-2 ">
+        <h3>{{user2Name}}</h3>
+        <div class="col-2">
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Xóa thư
+          </button>
+        </div>
+      </div>
+      <div class="row p-3">
+        <div #scrollMe style="height: 450px; background: white;overflow-y: scroll; " id="chatBox">
+          <div *ngFor="let item of messages">
+            <div class="row mt-1 mb-2" *ngIf="item.sender ==user2">
+              <div class="col-1 d-flex justify-content-end">
+                <img src="{{this.user2Avatar}}"
+                     alt="" class="anotherAvatar">
+              </div>
+              <div class="col-8">
+                <div>
+                  <p class="anotherUserChat">{{item.content}} </p>
+                  <p class="timeChat">{{item.timestamp | date: 'dd/MM/yyyy hh:mm'}}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-1" *ngIf="item.sender == user1">
+              <div class="col-11 d-flex justify-content-end">
+                <p class="myUserChat">{{ item.content }}</p>
+              </div>
+              <div class="col-1">
+                <img
+                  src="{{user1Avatar}}"
+                  alt="" class="myChatAvatar">
+              </div>
+              <div class="col-11"><p class="timeChat"
+                                     style="text-align: right">{{item.timestamp | date: 'dd/MM/yyyy hh:mm'}}</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-11 ps-3 pb-1">
+          <textarea type="text" id="message" style="width: 100%;" class="inputChat" [(ngModel)]="input"
+                    (keydown.enter)="sendMessages()" placeholder="Nhập tin nhắn..."></textarea>
+
+        </div>
+        <div class="col-1 pe-1 ">
+          <a type="button" (click)="sendMessages()" style="border: none">
+
+            <!--            <i  class="fa fa-plane"></i>-->
+            <span class="fa-solid fa-paper-plane" style="font-size: 25pt;line-height: 50px;background: pink"></span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa tin nhắn</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn chắc chắn xóa tin nhắn này?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-danger" (click)="delete()" data-bs-dismiss="modal">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>

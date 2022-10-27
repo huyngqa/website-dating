@@ -1,0 +1,225 @@
+<app-header></app-header>
+<div class=" row container-fluid">
+  <div class="col-3 sidenav">
+    <app-menu></app-menu>
+  </div>
+
+  <div class="col-lg-9 p-2">
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-10">
+
+        <!--th-->
+        <!--        <div class=" row shadow p-3 " style="border-radius: 15px">-->
+        <!--          <div class="row" >-->
+        <!--            <div class="col-lg-3" *ngFor="let s of suggestList">-->
+        <!--              <div class="cart1 shadow">-->
+        <!--                <div class="cart_img">-->
+        <!--                  <img src="{{s.avatar}}" width="100%" height="100%"-->
+        <!--                       alt="">-->
+        <!--                </div>-->
+        <!--                <div class="row">-->
+        <!--                  <div class="col-lg-12">-->
+        <!--                    <h6 class="ten">{{s.name}}</h6>-->
+        <!--                  </div>-->
+
+        <!--                </div>-->
+        <!--                <div class="row">-->
+        <!--                  <div class="col-lg-12">-->
+
+        <!--                    <p *ngIf="s.gender==true" class="gioitinh">Nam</p>-->
+        <!--                    <p *ngIf="s.gender==false" class="gioitinh">Nữ</p>-->
+        <!--                  </div>-->
+        <!--                </div>-->
+        <!--                <div class="row">-->
+        <!--                  <div class="col-lg-12">-->
+        <!--                    <button class="accept btn btn-sm btn-outline-primary" [routerLink]="['/users', s.idUser]" >Chi tiết</button>-->
+        <!--                  </div>-->
+        <!--                </div>-->
+
+        <!--                <div class="social">-->
+
+        <!--                  <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i></a>-->
+        <!--                  <a href="#" class="facebook"><i class="fa-brands fa-facebook"></i></a>-->
+        <!--                  <a href="#" class="instagram"><i class="fa-brands fa-instagram"></i></a>-->
+        <!--                  <a href="#" class="tiktok"><i class="fa-brands fa-tiktok"></i></a>-->
+        <!--                </div>-->
+        <!--                <div>-->
+        <!--                  &lt;!&ndash;            <button class="denied btn btn-sm btn-outline-danger" (click)="denied(myId,r.idUser)">Từ chối <i class="fa-solid fa-x"></i></button>&ndash;&gt;-->
+        <!--                </div>-->
+
+        <!--              </div>-->
+
+        <!--            </div>-->
+
+        <!--          </div>-->
+        <!--        </div>-->
+
+        <!--        - -->
+
+        <!--        &#45;&#45;-->
+
+        <div class="row shadow-lg p-3 mt-4" style="border-radius: 15px" *ngIf="details">
+          <div class="col-lg-1">
+            <img class="avatar" src="{{details.avatar}}">
+
+          </div>
+          <div class="col-lg-11">
+            <div class="ms-2">
+              <div class="row m-0">
+                <div class="col-lg-12 m-0">
+                  <p class="m-0">{{details.userName}}</p>
+                </div>
+              </div>
+              <div class="row  m-0">
+                <div class="col-lg-10 m-0 mb-3">
+                  <p class="hoverCss">{{details.time| date:"dd/MM/yyyy"}}</p>
+                </div>
+                <div class="col-lg-2 text-end">
+                  <div>
+                      <span style="font-size: 30px" [matMenuTriggerFor]="menu" class="hoverCss"
+                            aria-label="Example icon-button with a menu">
+                        ...
+                      </span>
+                    <mat-menu #menu="matMenu">
+                      <button [disabled]="details.idUser != idCheck" mat-menu-item data-bs-toggle="modal"
+                              data-bs-target="#exampleModal" (click)="modalTakeInfo(details)">
+                        <span>Sửa bài đăng</span>
+                      </button>
+                      <button mat-menu-item disabled>
+                        <span>Báo cáo bài đăng</span>
+                      </button>
+                    </mat-menu>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>{{details.content}}</p>
+          </div>
+          <div class="img-fluid d-inline-block" *ngIf="img">
+            <div class=" img-fluid" *ngIf="img.length ==1">
+              <img width="100%" class=" m-1 hoverCss" *ngFor="let x of img" src="{{x}}">
+            </div>
+            <div class=" img-fluid" *ngIf="img.length >1">
+              <img width="45%" class=" m-1 hoverCss" *ngFor="let x of img" src="{{x}}">
+            </div>
+          </div>
+          <div class="text-end" *ngIf="length">
+            <span class="text-end p-2 m-0" style="font-size: 15px">{{length}} bình luận</span>
+          </div>
+
+          <div class="row text-center">
+            <div>
+              <hr class="m-0 p-0">
+            </div>
+            <div class="col-lg-4 p-2">
+              <i class="fa-sharp fa-solid fa-thumbs-up hoverCss" style="font-size: 20px; color:#0b5ed7"></i>
+              <span class="hoverCss" style="font-size: 15px">Thích</span></div>
+            <div class="col-lg-4 p-2">
+              <i class="fa-regular fa-message hoverIcon " style="font-size: 20px"></i>
+              <span style="font-size: 15px" class="hoverCss">Bình Luận</span></div>
+            <div class="col-lg-4 p-2">
+              <i class="fa-sharp fa-solid fa-arrow-up-right-from-square hoverCss"
+                 style="font-size: 20px"></i>
+              <span class="hoverCss" style="font-size: 15px">Gửi</span></div>
+            <div>
+              <hr class="m-0 p-0">
+            </div>
+          </div>
+          <div class="row  bg-gradient">
+            <div class="row bg-gradient">
+              <div class="row">
+                <div *ngFor="let comment of listComment">
+                  <table class="ms-4 me-4 mt-4 mb-0"
+                         style="width: auto; margin: 20px auto;">
+                    <tr>
+                      <th style="width: 60px"><img height="50px" width="50px" style="border-radius: 50%"
+                                                   src="{{comment.avatar}}" alt=""></th>
+                      <td style=";font-size: 16px ; color: #666666">
+                        <div style="background-color: #FFF0F5 ; padding: 5px 10px ; border-radius: 10px ">
+                        <span style="font-weight: bolder"
+                        >{{comment.name}}</span>
+                          <div>{{comment.content}}</div>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="d-flex col-lg-12 mt-4">
+                <div style="height: 50px ; width: 50px ; border-radius: 50%">
+                  <img class="avatar" *ngIf="idAcc"
+                       src="{{idAcc.avatar}}" height="50" width="50" style="border-radius: 50%">
+                </div>
+                <div class="w-100" style="margin-left: 5px; margin-top: 3px; border-radius: 22px;width: 100%">
+                  <form [formGroup]="createForm" (ngSubmit)="createComment()">
+                    <div style="width: 100%" class="d-flex">
+                      <textarea id="comment" [(ngModel)]="element" class="form-control" type="text"
+                                formControlName="content"
+                                style="margin-left: 30px;height: 70px;width:80% ; border-radius: 25px;font-size: 24px"></textarea>
+                      <button *ngIf="element" type="submit"
+                              style="border: none ; background: none;margin-left: 10px;width : 10% ; height: 70px"><i
+                        style="font-size: 30px;color: blue" class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row text-center bg-gradient">
+            <div class="col-lg-12 p-1">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45; modal &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="border: none">
+        <h2 class="modal-title" id="exampleModalLabel">Cập nhật bài đăng</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="formUpdate" *ngIf="formUpdate" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div class=" text-center d-flex justify-content-center"
+               style="margin-left: 5px; margin-top: 3px; border-radius: 22px;">
+            <div style="width: 100% ; text-align: left">
+              <label for="content"><h4 style="font-weight: 500">Nội dung cập nhật :</h4></label>
+              <textarea class="w-100" value="{{modalInfo.content}}" formControlName="content"
+                        class="form-control text-capitalize" placeholder="Bạn đang nghĩ gì thế..."
+                        style="border-radius: 22px" id="content"></textarea>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px">
+            <label for="file" style="cursor: pointer; margin-left: 20px "><i style="color:deepskyblue;font-size: 35px"
+                                                                             class="fa-solid fa-image"></i></label>
+            <input id="file" type="file" style="display: none" multiple (change)="showMany($event)">
+            <div class="img-fluid">
+              <img width="20%" *ngFor="let img of loadArr" src="{{img}}">
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="resetIng()">Hủy</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Cập nhật</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

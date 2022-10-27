@@ -1,0 +1,201 @@
+<app-header></app-header>
+<div class=" row container-fluid">
+  <div class="col-lg-3 sidenav">
+    <div >
+      <app-menu></app-menu>
+    </div>
+
+  </div>
+  <div class="col-lg-9 p-2">
+    <div class="shadow-lg">
+      <div class="row mt-3 mb-3">
+        <div class="col-lg-12 text-center">
+          <h2 style="color: black">Thông tin tài khoản</h2>
+        </div>
+      </div>
+
+      <!--Avatar-->
+      <div class="mb-3 text-center">
+        <img style="border-radius: 100px; height: 100px; width: 100px" class="mb-2 avt"
+             src="{{user.avatar}}">
+        <h4 class="form-label fw-bold">{{user.name}}</h4>
+      </div>
+
+      <hr>
+
+
+      <!--Giới tính-->
+      <div class="mb-3 d-flex">
+        <div class="w-50 p-2">
+          <label class="form-label fw-bold" style="margin-left: 200px">
+            Giới tính:
+          </label>
+
+        </div>
+        <div class="w-50 p-2">
+          <label *ngIf="user.gender" class="form-label">
+            Nam
+          </label>
+          <label *ngIf="!user.gender" class="form-label">
+            Nữ
+          </label>
+        </div>
+      </div>
+
+      <!--Ngày sinh-->
+      <div class="mb-3 d-flex">
+        <div class="w-50 p-2 ">
+          <label class="form-label fw-bold" style="margin-left: 200px">
+            Ngày sinh:
+          </label>
+        </div>
+        <div class="w-50 p-2">
+          <label class="form-label">
+            {{user.dateOfBirth | date:"dd/MM/yyyy"}}
+          </label>
+        </div>
+      </div>
+
+      <!--Địa chỉ-->
+      <div class="mb-3 d-flex">
+        <div class="w-50 p-2 ">
+          <label class="form-label fw-bold" style="margin-left: 200px">
+            Địa chỉ:
+          </label>
+        </div>
+        <div class="w-50 p-2 ">
+          <label class="form-label">
+            {{user.address}}
+          </label>
+        </div>
+      </div>
+
+      <!--Tình trạng-->
+      <div class="mb-3 d-flex">
+        <div class="w-50 p-2">
+          <label class="form-label fw-bold" style="margin-left: 200px">
+            Tình trạng:
+          </label>
+        </div>
+        <div class="w-50 p-2">
+          <label *ngIf="!user.married" class="form-label">
+            Độc thân
+          </label>
+          <label *ngIf="user.married" class="form-label">
+            Có gia đình
+          </label>
+        </div>
+      </div>
+
+      <!--Loại-->
+      <div class="mb-3 d-flex ">
+        <div class="w-50 p-2">
+          <label class="form-label fw-bold" style="margin-left: 200px">
+            Loại thành viên:
+          </label>
+        </div>
+        <div class="w-50 p-2">
+          <label class="form-label">
+            {{user.typeUser.typeUserName}}
+          </label>
+        </div>
+      </div>
+
+      <!--Xu-->
+      <div class="mb-3 d-flex">
+        <div class="w-50 p-2 ">
+          <label class="form-label fw-bold" style="margin-left: 200px">
+            Xu hiện có:
+          </label>
+        </div>
+        <div class="w-50 p-2">
+          <label class="form-label">
+            <div class="input-group">
+              <div class="form-outline">
+                {{user.coin}}
+              </div>
+              <div class="mb-2">
+                <button style="margin-left: 100px" type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalPaypal">
+                  Nạp thêm
+                </button>
+<!--                <button [routerLink]="['/user/create-user', user.idUser]" style="margin-left: 100px" type="button" class="btn btn-info" data-bs-toggle="modal">-->
+<!--                 Tạo thông tin tài khoản-->
+<!--                </button>-->
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Modal thanh toán-->
+<div class="modal fade" id="exampleModalPaypal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thanh toán Paypal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3 form-outline">
+          <input type="number" id="amount" [(ngModel)]="prices" [formControl]="checkPrice" class="form-control"
+                 placeholder="Số tiền cần chuyển đổi"/>
+          <span class="input-group-text">
+            $
+          </span>
+        </div>
+        <p style="color:red;" *ngIf="checkPrice.invalid ">{{getErrorMessageCheckPrice()}}</p>
+        <div>
+          <div>
+            <h6>Số tiền nạp:
+              <span>
+                            1 xu
+                        </span>
+            </h6>
+            <p>Tỷ giá hối đoái của 1 USD: 1 xu</p>
+          </div>
+        </div>
+        <div>
+          <div>
+            <button (click)="callPaypal(prices)" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-dismiss="modal" data-bs-target="#exampleModal">
+              Xác nhận nạp
+            </button>
+          </div>
+          <div style="margin-top: 10px">
+            <p>Nhấp
+              <span class="text-danger">
+                        “Xác nhận nạp”
+                        </span>
+              ，bạn được chuyển đến kênh nạp bên thứ 3.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Thanh toán Paypal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="myPaypal"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="closeModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

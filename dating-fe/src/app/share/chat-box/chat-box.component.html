@@ -1,0 +1,85 @@
+<div class=" container-fluid">
+  <div id="viewChat" style="display: none" >
+    <div class="d-flex justify-content-end">
+      <div style="height: 300px; width: 300px; position: fixed;bottom: 90px;  right: 0px">
+        <div style="border-radius: 20px 20px 0 0; background: pink">
+          <div class="row">
+            <div class="col-9 d-flex ">
+              <img class="mt-3 ms-3 "
+                   src="{{user2Avatar}}"
+                   alt="" style="height: 30px; width: 30px; border-radius: 50%">
+              <span style="font-size: 13px;padding-top: 20px; padding-left: 7px">{{user2Name}}</span>
+            </div>
+            <div class="col-3 d-flex justify-content-center align-content-center" >
+              <a type="button" class="btn btn-danger" style="background: none;border: none; color: red;padding-top: 20px"
+                      (click)="closeChat()">X
+              </a>
+            </div>
+          </div>
+
+          <div class="row p-3">
+            <div #scrollMe style="height: 250px; background: white;overflow-y: scroll; " id="chatBox">
+              <div *ngFor="let item of messages">
+                <div class="row mt-1 mb-2" *ngIf="item.sender ==user2">
+                  <div class="col-2">
+                    <img src="{{this.user2Avatar}}"
+                         alt="" class="anotherAvatar">
+                  </div>
+                  <div class="col-10">
+                    <div>
+                      <p class="anotherUserChat">{{item.content}} </p>
+                      <p class="timeChat ms-0">{{item.timestamp | date: 'dd/MM/yyyy hh:mm'}}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mt-1" *ngIf="item.sender == user1">
+                  <div class="col-10 d-flex justify-content-end">
+                    <p class="myUserChat">{{ item.content }}</p>
+                  </div>
+                  <div class="col-2 d-flex justify-content-end">
+                    <img
+                      src="{{user1Avatar}}"
+                      alt="" class="myChatAvatar">
+                  </div>
+                  <div class="col-11">
+                    <p class="timeChat" style="text-align: right">{{item.timestamp | date: 'dd/MM/yyyy hh:mm'}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-10 ps-3 pb-1">
+              <textarea (keydown.enter)="sendMessages()"   style="width: 100%;" class="inputChat" placeholder="Aa" [(ngModel)]="input"></textarea>
+            </div>
+            <div class="col-2 p-0">
+              <a type="button" style="margin-top:13px; padding-left: 0 " (click)="sendMessages()">Gửi
+<!--                <i style="font-size: 13pt" class="fas fa-paper-plane mt-4"></i>-->
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <table class="mt-2 w-100 hoverMess" *ngFor="let gr of groups">
+      <tr (click)="loadMessage(gr.idUser,gr.avatar,gr.name)">
+        <td class="w-25 text-center"><img
+          src="{{gr.avatar}}"
+          alt="" style="height: 50px; width: 50px; border-radius: 50%">
+        </td>
+        <td class="w-75">
+          <div>
+            <span class="mt-2 pt-2 nameWating">{{ gr.name }}</span><br>
+            <span></span>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+</div>

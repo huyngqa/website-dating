@@ -1,0 +1,27 @@
+<div class="container-fluid mt-5" style="display: flex;justify-content: center">
+  <ul>
+    <li (click)="updateActive(1)" style="--clr: #33CC33">
+      <input type="radio" id="f-option"  checked="checked" name="selector">
+      <label for="f-option">Đang hoạt động</label>
+      <div class="check" ></div>
+    </li>
+
+    <li (click)="updateActive(2)" style="--clr: coral">
+      <input type="radio" id="s-option" name="selector">
+      <label for="s-option">Đang bận</label>
+
+      <div class="check"><div class="inside"></div></div>
+    </li>
+    <li (click)="updateActive(3)" style="--clr: red">
+      <input type="radio" id="t-option" name="selector">
+      <label for="t-option">Không hoạt động</label>
+      <div class="check"><div class="inside"></div></div>
+    </li>
+  </ul>
+</div>
+<div class="signature mt-2">
+  <p>C0422G1<i class="much-heart"></i> by <a href="https://codepen.io/AngelaVelasquez">Dating</a></p>
+</div>
+
+
+

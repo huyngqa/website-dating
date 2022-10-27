@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --primary-color: #aa2219;
+}
+body{
+  height: 100vh;
+  background-color: #f0f2ed;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppin";
+  color: white;
+}
+.cart{
+  background-color: #FFFFFF;
+  width: 80%;
+  height: 450px;
+  border-radius: 18px;
+  text-align: center;
+  overflow: hidden;
+}
+.cart p{
+  color:white ;
+}
+.cart h4{
+  margin: 35px 0px 10px 0px;
+  color: white;
+}
+.cart_img{
+  width: 200px;
+  height: 200px;
+  border: 4px solid var(--primary-color);
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  transform: translateY(25px);
+  transition: 0.8s;
+}
+
+.cart_img:hover{
+  width: 100%;
+  height: 100%;
+  border-radius: unset;
+  transform: unset;
+  border: none;
+}
+
+img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+}
+
+.cart .social{
+  margin: 15px 0;
+}
+
+.cart .social a{
+  color: white;
+  margin: 15px 10px;
+  font-size: 20px;
+}
+
+.cart .social a:hover{
+  color: var(--primary-color);
+}
+
+.cart button{
+  width: 120px;
+  height: 30px;
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.cart button:hover{
+  background-color: var(--primary-color);
+}
+#friend {
+  font-size: 20px;
+  color: #f8f7f7;
+  border-radius: 10px;
+  border-color: #ec092b!important;
+  padding: 5px 10px 5px 10px;
+  width: 180px;
+  font-weight: bolder;
+  box-shadow: inset 0 0px 0px 50px #e06c6c;
+}
+
+#friend a {
+  text-decoration: none;
+}
+.previous {
+  font-size: 15px;
+  border-radius: 20px;
+  border-color: #e31022;
+  padding: 10px 10px 15px 10px;
+  width: 90px;
+  color: #ffffff;
+  font-weight: bolder;
+  box-shadow: inset 0 0 0 50px #b30217;
+}
+
+.previous a {
+  text-decoration: none;
+}
+.next {
+  font-size: 15px;
+  border-radius: 20px;
+  border-color: coral;
+  color: #ffffff;
+  width: 80px;
+  padding: 10px 10px 15px 15px;
+  font-weight: bolder;
+  box-shadow: inset 0 0 0 50px #b30217;
+}
+
+.next a {
+  text-decoration: none;
+}
+.numberPage {
+  font-size: 15px;
+  background-color: #fff5ea;
+  border-color: #e31c3a;
+  padding: 10px 10px 15px 10px;
+  box-shadow: inset 0 0 0 10px #ffffff;
+}
+
+.numberPage a {
+  text-decoration: none;
+}
+
+.page-item.active .page-link {
+  background-color: #d40808;
+  border-color: #d40808;
+}
+#friend {
+  text-decoration: none;
+}
+ #friend:hover {
+   font-size: 20px;
+   color: #f8f7f7;
+   border-radius: 10px;
+   border-color: #dc21bd !important;
+   padding: 5px 10px 5px 10px;
+   width: 180px;
+   font-weight: bolder;
+   box-shadow: inset 0 0px 0px 50px #e22323;
+}

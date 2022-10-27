@@ -1,0 +1,108 @@
+  <nav class="navbar navbar-light bg-light"  style="background-color:#f11515 !important; padding: 20px 0 20px 0">
+    <div class="container-fluid "  >
+      <a routerLink=""><img src="assets/video/Untitled-1.png"  width="200px"alt="" style="margin-left: 40px"></a>
+      <div >
+        <div class="d-flex ">
+          <input type="text"  class="form-control me-2  searchInput" [(ngModel)]="name" #element (keydown.enter)="searchInHome(element.value)"  style=" border-radius: 10px;height: 45px;padding: 0 10px;width: 350px;border-color: coral;margin-left: 5px" placeholder="Tìm kiếm tên">
+          <div id = "search"  > <a [routerLink]="['/share/list/', name]"  style="font-size: 25px" > <i class="fa-solid  fa-magnifying-glass"></i></a></div>
+        </div>
+      </div>
+      <div class="ms-3 " id="logo" style="border-radius: 10px;height: 45px;margin-right: 30px;text-align: center;
+    line-height: initial;">
+        <a routerLink="/account/login" >Đăng Nhập</a>
+      </div>
+    </div>
+  </nav>
+  <div class="hero " id="home" >
+    <div>
+      <div class="row align-items-center">
+        <div class="col-sm-12 col-md-12 col-lg-3">
+          <div class="hero-content hero-hinh">
+            <div> <img src="assets/video/fontchu.png" height="329" width="550"/>
+            </div>
+            <div style="margin: 0 0 0 160px">
+              <span style="font-size: 30px">  <a href=""><i class="fa-brands fa-facebook text-white me-4"></i></a></span>
+              <span style="font-size: 30px">  <a href=""><i class="fa-solid fa-envelope text-white me-4"></i></a></span>
+              <span style="font-size: 30px"> <a href=""><i class="fa-brands fa-google-drive text-white me-4"></i></a></span>
+              <span style="font-size: 30px">   <a href=""><i class="fa-brands fa-twitter text-white "></i></a></span>
+
+            </div>
+            <div   id="logo1" style="border-radius: 10px;height: 45px;margin: 20px 0 10px 200px;">
+              <a routerLink="/account/register" >Đăng ký</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-9 d-none d-md-block text-end ">
+          <div class="hero-image d-flex justify-content-end p-0 ms-3">
+            <img src="assets/video/hinh-nen.png" height="565" width="1000"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="service" id="service">
+    <div class="container">
+      <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+        <p>Bạn sẽ có gì</p>
+        <h2> Những trải nghiệm thú vị</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.0s">
+          <div class="service-item">
+            <div class="service-icon">
+              <img src="assets/video/logo2.png" height="140px" width="140px" alt="">
+            </div>
+            <div class="service-text">
+              <h3>Trò chuyện</h3>
+              <p>
+                Trải nghiệm trò chuyện thú vị với những người bạn mới
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="service-item">
+            <div class="service-icon">
+              <img src="https://dongphuchaianh.com/wp-content/uploads/2022/04/chup-anh-ky-yeu-voi-nguoi-yeu-tao-dang-de-thuong.jpg" height="150px" width="150px" alt="">
+            </div>
+            <div class="service-text">
+              <h3>Kết bạn</h3>
+              <p>
+                Kết bạn năm châu với Line giúp bạn có nhiều niềm vui hơn trong cuộc sống
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.4s">
+          <div class="service-item">
+            <div class="service-icon">
+              <img src="https://dashboard.mixhotel.vn/uploads/images/624418a1d6a5eb1d066980ed/tao-dang-chup-anh-voi-nguoi-yeu__5_.webp" height="150px" width="140px" alt="">
+            </div>
+            <div class="service-text">
+              <h3>Hẹn hò</h3>
+              <p>
+                Cơ hội tìm được bạn đời như ý muốn qua chức năng gợi ý hẹn hò
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.6s">
+          <div class="service-item">
+            <div class="service-icon">
+              <img src="https://luckyanhvaem.com/uploads/source/dich-vu/chup-anh-cuoi/de-cong/anh-cuoi-de-cong-dep.jpg" height="150px" width="140px" alt="">
+            </div>
+            <div class="service-text">
+              <h3>Xa hơn nữa</h3>
+              <p>
+                Từ tình bạn đến tình yêu , còn đợi gì nữa
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+
+

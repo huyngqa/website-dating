@@ -1,0 +1,60 @@
+#searchInput:focus {
+  outline: 0;
+}
+
+.hoverMess {
+  text-decoration: none;
+}
+
+.hoverMess:hover {
+  background: gray;
+}
+
+.hoverMess::selection {
+  background: rgba(82, 179, 217, 0.3);
+  color: inherit;
+}
+.anotherUserMessage{
+  background: #20c997;
+  border-radius: 0px 15px 15px 15px;
+  padding: 10px;
+  margin-bottom: 0;
+}
+.timeChat{
+  color: gray;
+  font-size: 10pt;
+  margin-left: 20px;
+  margin-bottom: 0;
+}
+.MyUserMessage{
+  width: 60%;
+  background: pink;
+  border-radius: 15px 0 15px 15px;
+  padding: 10px;
+  margin-bottom: 0;
+}
+.inputChat{
+  border-radius: 10px;
+  padding: 5px;
+  border-color: white;
+}
+.nameWating {
+  font-weight: bold;
+}
+.myChatAvatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+
+}
+
+.anotherAvatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%
+}
+.timeChat {
+  color: gray;
+  font-size: 8pt;
+  margin-left: 20px;
+}
